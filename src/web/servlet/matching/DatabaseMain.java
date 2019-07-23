@@ -111,7 +111,7 @@ public class DatabaseMain {
 		}
 		Set<String> ret1 = new LinkedHashSet<String>();
 		try (Stream<String> lines = Files.lines(Paths.get(TABLEMATCHING_PATH))) {
-			ret1 = lines.filter(line -> line.contains(dataset)).map(String::toUpperCase).collect(Collectors.toSet());
+			ret1.addAll(lines.filter(line -> line.contains(dataset)).map(String::toUpperCase).collect(Collectors.toSet()));
 		}
 		Set<String> ret = new LinkedHashSet<String>();
 		ret.add("Dataset\t#ExactMatch\t#SimMatch");
@@ -150,6 +150,7 @@ public class DatabaseMain {
 		Set<String> ret = new LinkedHashSet<String>();
 
 		Set<String> propExact = new LinkedHashSet<String>();
+		Set<String> propSim = new LinkedHashSet<String>();
 		for (String prop : properties) {
 			try (Stream<String> lines = Files
 					.lines(Paths.get(TABLEMATCHES_EXACT))) {
@@ -158,7 +159,7 @@ public class DatabaseMain {
 						lines.filter(line -> line.contains(prop)).map(String::toUpperCase).collect(Collectors.toSet()));
 			}
 		}
-		Set<String> propSim = new LinkedHashSet<String>();
+		
 		for (String prop : properties) {
 			try (Stream<String> lines = Files
 					.lines(Paths.get(TABLEMATCHES_SIM))) {

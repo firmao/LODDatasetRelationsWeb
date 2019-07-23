@@ -37,6 +37,10 @@ public class MatchingServlet extends HttpServlet {
 		if (request.getParameter("query") != null) {
 			Set<String> ret = new LinkedHashSet<String>();
 			String dataset = request.getParameter("query").trim();
+			boolean bDataset = ((request.getParameter("opt") != null) && ((request.getParameter("opt").contentEquals("dataset"))));
+			boolean bProperties = ((request.getParameter("opt") != null) && ((request.getParameter("opt").contentEquals("properties"))));
+			boolean bSparql = ((request.getParameter("opt") != null) && ((request.getParameter("opt").contentEquals("sparql"))));
+			
 			String str[] = dataset.split(",");
 			if (str.length > 1) {
 				Set<String> props = new LinkedHashSet<String>();
@@ -49,7 +53,13 @@ public class MatchingServlet extends HttpServlet {
 					ret = DatabaseMain.searchDB(props);
 				}
 			} else {
-				ret = DatabaseMain.searchDB(dataset);
+				if(bDataset) {
+					ret = DatabaseMain.searchDB(dataset);
+				} else if(bProperties) {
+					Set<String> props = new LinkedHashSet<String>();
+					props.add(dataset);
+					ret = DatabaseMain.searchDB(props);
+				}
 			}
 			StringBuffer bRet = new StringBuffer();
 			if (ret != null && ret.size() > 0) {
@@ -57,7 +67,8 @@ public class MatchingServlet extends HttpServlet {
 						+ "table {\n" + "  font-family: arial, sans-serif;\n" + "  border-collapse: collapse;\n"
 						+ "  width: 100%;\n" + "}\n" + "\n" + "td, th {\n" + "  border: 1px solid #dddddd;\n"
 						+ "  text-align: left;\n" + "  padding: 8px;\n" + "}\n" + "\n" + "tr:nth-child(even) {\n"
-						+ "  background-color: #dddddd;\n" + "}\n" + "</style>\n" + "</head>\n" + "<body>");
+						+ "  background-color: #dddddd;\n" + "}\n" + "</style>\n" + "</head>\n" + "<body>"
+						+ "<script src=\"https://www.kryogenix.org/code/browser/sorttable/sorttable.js\"></script>");
 				bRet.append("<h1>Input: </h1><textArea cols=\"100\" rows=\"3\">" + dataset + "</textArea>");
 				bRet.append("<h1>Output:</h1>");
 				int count = 0;
@@ -87,7 +98,7 @@ public class MatchingServlet extends HttpServlet {
 						//response.getOutputStream().println(s1);
 						// response.getOutputStream().println(r.replaceAll(sR[0], "<b>"+sR[0]+"</b>="));
 						bRet.append("<h3>Similar Match</h3>");
-						bRet.append("<table>\n" + "  <tr>\n" + "    <th>Property_Source</th>\n"
+						bRet.append("<table class=\"sortable\">\n" + "  <tr>\n" + "    <th>Property_Source</th>\n"
 										+ "    <th>Property_Target</th>\n" + "    <th>Dataset_Source</th>\n"
 										+ "    <th>Dataset_Target</th>\n" + "  </tr>");
 					} else {
@@ -104,7 +115,7 @@ public class MatchingServlet extends HttpServlet {
 						} else {
 							if (count == 0) {
 								//bRet.append("<table><tr><th>" + s[0] + "</th><th>"	+ s[1] + "</th><th>" + s[2] + "</th></tr>");
-								bRet.append("<table><tr><th>Dataset</th><th>#Exact Match</th><th>#Similarity > 0.9</th></tr>");
+								bRet.append("<table class=\"sortable\"><tr><th>Dataset</th><th>#Exact Match</th><th>#Similarity > 0.9</th></tr>");
 							} else {
 								String ds = getLink(s[0]);
 								bRet.append("<tr>\n" + "    <td>" + ds + "</td>\n" + "    <td>"
