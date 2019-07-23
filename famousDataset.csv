@@ -1,0 +1,11 @@
+NameDataset,Link
+DBLP 2017,http://downloads.linkeddatafragments.org/hdt/dblp-20170124.hdt
+DBpedia,http://gaia.infor.uva.es/hdt/dbpedia2016-10/dbpedia2016-10.hdt
+FreeBase,http://gaia.infor.uva.es/hdt/freebase-rdf-2013-12-01-00-00.hdt.gz
+Geonames,http://gaia.infor.uva.es/hdt/geonames-11-11-2012.hdt.gz
+LinkedGeoData,http://gaia.infor.uva.es/hdt/linkedgeodata-2012-09-10.hdt.gz
+Semantic Web Dog food,http://gaia.infor.uva.es/hdt/swdf-2012-11-28.hdt.gz
+WikiData,http://gaia.infor.uva.es/hdt/wikidata/wikidata2018_09_11.hdt.gz
+Wikitionary,http://gaia.infor.uva.es/hdt/wiktionary_en_2012-07-21.hdt.gz
+WordNet,http://gaia.infor.uva.es/hdt/wordnet31.hdt.gz
+YAGO,http://gaia.infor.uva.es/hdt/yago2s-2013-05-08.hdt.gz
