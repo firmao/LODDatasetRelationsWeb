@@ -44,6 +44,7 @@
 	</script>
 </head>
 <body>
+	<h1><strong>The incremental LOD Dataset relation index</strong></h1>
 	<p>
 		<strong>About</strong>:<br />LOD Dataset relation index was developed
 		with the intention to provide an index of the relations among the LOD
@@ -61,6 +62,9 @@
 				(URIs)</em></span> or <span style="text-decoration: underline;"><em>SPARQL
 				query</em></span>.
 	</p>
+	<p>
+		<p>The <strong>output</strong> is divided into <strong>2 types</strong>: (<strong>1</strong>) <strong>Exact matches</strong>, where is represented JSON format, containing the property and the datasets where the property was found (<strong>2</strong>) A table containing the <strong>similar matches</strong>, with properties and dataset indicating the <strong>Source and Target</strong>.&nbsp;</p>
+	</p>
 	<div style="margin-left:5%">
 			Examples:
 			<ol style="margin-top:0px">
@@ -73,7 +77,17 @@
 	<form id="queryForm" action="matchDataset" method="get">
 		<fieldset style="border: none">
 			<textarea name="query" cols="100" rows="15"></textarea>
-			<br /> <input type="submit" value="Execute" />
+			<br/>
+			Preferred Result Format:
+			<input type="radio" name="output" value="json" checked="checked"/> JSON
+			<br/>
+			<input type="radio" name="opt" value="dataset"/> Search by the dataset name
+			<br/>
+			<input type="radio" name="opt" value="properties"/> Search by set of properties
+			<br/>
+			<input type="radio" name="opt" value="sparql"/> Search by SPARQL query
+			<br/>
+	 		<input type="submit" value="Execute" />
 		</fieldset>
 	</form>
 	<p>Datasets already indexed:
@@ -83,6 +97,7 @@
 		<li>915 datasets (HDT files) randomly selected from&nbsp;<a
 			href="http://lodlaundromat.org/" rel="nofollow">LOD Laundromat</a>.
 		</li>
+		<p>Example of some&nbsp;<a title="Famous datasets" href="https://github.com/firmao/LODDatasetRelationsWeb/blob/master/famousDataset.csv" target="_blank" rel="noopener">Famous datasets are already indexed (click here).</a></p>
 		<li>Takes 88 hours to generate the LOD dataset relation index.</li>
 	</ul>
 	<p>
