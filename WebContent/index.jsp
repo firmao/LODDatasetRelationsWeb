@@ -69,10 +69,11 @@
 			Examples:
 			<ol style="margin-top:0px">
 				<li><a href="javascript:selectQuery(0);">Dataset</a></li>
-				<li><a href="javascript:selectQuery(1);">Set of properties
+				<li><a href="javascript:selectQuery(1);">Set of properties or classes
 				(URIs) separated by comma ","</a></li>
 				<li><a href="javascript:selectQuery(2);">SPARQL query</a></li>
 			</ol>
+			<p>For more examples <a href="examples.html">click here</a></p>
 		</div>
 	<form id="queryForm" action="matchDataset" method="get">
 		<fieldset style="border: none">
@@ -115,6 +116,7 @@
 		GitHub repository:&nbsp;<a
 			href="https://github.com/firmao/LDatasetGenerator">https://github.com/firmao/LDatasetGenerator</a>
 	</p>
+	<p>Some <a href="statistics.html" target="_blank" rel="noopener">statistics(click)</a></p>
 	<br>
 	<p>WE WOULD LIKE TO REMIND THAT THIS IS ONLY A PROOF OF CONCEPT,
 		NOT THE FINAL VERSION. THE AIM IS TO IMPROVE THIS WORK according to

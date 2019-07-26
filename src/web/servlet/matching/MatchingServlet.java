@@ -54,6 +54,9 @@ public class MatchingServlet extends HttpServlet {
 				}
 			} else {
 				if(bDataset) {
+					dataset = dataset.replaceAll("http://", "");
+					dataset = dataset.replaceAll("https://", "");
+					dataset = dataset.replaceAll("/sparql", "_sparql");
 					ret = DatabaseMain.searchDB(dataset);
 				} else if(bProperties) {
 					Set<String> props = new LinkedHashSet<String>();
